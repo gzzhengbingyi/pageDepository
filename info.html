@@ -609,7 +609,7 @@ button{
 	width:1.86rem;
 }
 .m-personalInfo .m-ipt{
-	width:4.2rem;
+	width:5.2rem;
 }
 .m-personalInfo .idcard-wrap{
 	margin-top:0.19rem;
@@ -767,7 +767,7 @@ button{
             metaElem.content = 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ", user-scalable=no";
             docElem.firstElementChild.appendChild(metaElem);
             var recalc = function(){
-                var width = docElem.clientWidth;
+                var width = docElem.getBoundingClientRect().width;
                 docElem.style.fontSize = 100 * (width / designDraftWidth) + 'px';
                 window.htmlFontSize = 100 * (width / designDraftWidth)
             };
