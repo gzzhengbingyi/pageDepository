@@ -467,6 +467,7 @@ button{
 	border-bottom:1px solid #dbdbdb;
 	font-size:0.32rem;
 	color:#333;
+	white-space: nowrap;
 }
 .m-authenticate .m-ipt-item:last-child{
 	border-bottom:none;
@@ -768,6 +769,7 @@ button{
             docElem.firstElementChild.appendChild(metaElem);
             var recalc = function(){
                 var width = docElem.getBoundingClientRect().width;
+                alert(width)
                 docElem.style.fontSize = 100 * (width / designDraftWidth) + 'px';
                 window.htmlFontSize = 100 * (width / designDraftWidth)
             };
