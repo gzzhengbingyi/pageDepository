@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" data-dpr="1" style="font-size: 48px;"><head>
+    <meta charset="utf-8">
+    <title>实名认证</title>
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+    <link rel="dns-prefetch" href="//wx.ts.163.com">
+    <link rel="dns-prefetch" href="//nos.netease.com">
+    <style type="text/css">
+    	html,body{
+	-ms-text-size-adjust:none;
+	-webkit-text-size-adjust:none;
+	text-size-adjust:none;
+}
+body{
+	line-height:1;
+	word-wrap:break-word;
+	font-family:"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+	overflow:auto;
+	background-color:#fff;
+	-webkit-overflow-scrolling:touch;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+*{
+	margin:0;
+	padding:0;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight:normal;
+}
+a,button,input,textarea{
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+a{
+	text-decoration:none;
+	color:inherit;
+}
+img{
+	border:0;
+	vertical-align:middle;
+	-webkit-touch-callout:none;
+}
+input[type="text"]{
+	-webkit-appearance:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+a{
+	display:inline-block;
+	text-decoration:none;
+}
+button{
+	font-weight:200;
+}
+@font-face {
+	font-family:"xfont";
+	src:url("http://wx.ts.163.com/res/fonts/xfont.eot?v=1510563013797");
+	src:url("http://wx.ts.163.com/res/fonts/xfont.eot?v=1510563013798#iefix") format("eot"),url("http://wx.ts.163.com/res/fonts/xfont.woff2?v=1510563013798") format("woff2"),url("http://wx.ts.163.com/res/fonts/xfont.woff?v=1510563013798") format("woff"),url("http://wx.ts.163.com/res/fonts/xfont.ttf?v=1510563013798") format("truetype"),url("http://wx.ts.163.com/res/fonts/xfont.svg?v=1510563013798#xfont") format("svg");
+}
+.u-icon{
+	display:inline-block;
+	font-family:"xfont" !important;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	font-style:normal;
+	font-weight:normal;
+	font-variant:normal;
+	text-transform:none;
+	line-height:1;
+	font-size:16px;
+	vertical-align:middle;
+	text-decoration:none;
+	text-transform:none;
+}
+.u-icon-arrow:before{
+	content:"\E001";
+}
+.u-icon-arrow_down:before{
+	content:"\E002";
+}
+.u-icon-arrow_store:before{
+	content:"\E003";
+}
+.u-icon-arrow_up:before{
+	content:"\E004";
+}
+.u-icon-audio:before{
+	content:"\E005";
+}
+.u-icon-audio_pause:before{
+	content:"\E006";
+}
+.u-icon-audio_play:before{
+	content:"\E007";
+}
+.u-icon-award_list:before{
+	content:"\E008";
+}
+.u-icon-buy:before{
+	content:"\E009";
+}
+.u-icon-cancel:before{
+	content:"\E00A";
+}
+.u-icon-check_failed:before{
+	content:"\E00B";
+}
+.u-icon-check_success:before{
+	content:"\E00C";
+}
+.u-icon-edit:before{
+	content:"\E00D";
+}
+.u-icon-like:before{
+	content:"\E00E";
+}
+.u-icon-line_price:before{
+	content:"\E00F";
+}
+.u-icon-logo_detail_kaola:before{
+	content:"\E010";
+}
+.u-icon-logo_detail_yanxuan:before{
+	content:"\E011";
+}
+.u-icon-noaccount:before{
+	content:"\E012";
+}
+.u-icon-search:before{
+	content:"\E013";
+}
+.u-icon-share:before{
+	content:"\E014";
+}
+.u-icon-step_1:before{
+	content:"\E015";
+}
+.u-icon-step_2:before{
+	content:"\E016";
+}
+.u-icon-step_success:before{
+	content:"\E017";
+}
+.u-icon-tab_fowllower:before{
+	content:"\E018";
+}
+.u-icon-tab_home:before{
+	content:"\E019";
+}
+.u-icon-tab_personal:before{
+	content:"\E01A";
+}
+.u-icon-top:before{
+	content:"\E01B";
+}
+.u-icon-video:before{
+	content:"\E01C";
+}
+.g-tab{
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:0.98rem;
+	background-color:rgba(250,250,250,0.97);
+	border-top:1px solid #c1c1c1;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	display:table;
+	width:100%;
+	table-layout:fixed;
+}
+.g-tab >*{
+	display:table-cell;
+	vertical-align:middle;
+}
+.g-tab .tab-item{
+	text-align:center;
+	font-size:0;
+}
+.g-tab .tab-item .tab-icon{
+	position:relative;
+	display:inline-block;
+	width:0.44rem;
+	height:0.44rem;
+	background-repeat:no-repeat;
+	background-size:0.44rem 0.44rem;
+	text-align:center;
+}
+.g-tab .tab-item .tab-icon.tab-icon-home{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_home@3x.png");
+}
+.g-tab .tab-item .tab-icon.tab-icon-find{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_explore@3x.png");
+}
+.g-tab .tab-item .tab-icon.tab-icon-orders{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_detail@3x.png");
+}
+.g-tab .tab-item .tab-icon.tab-icon-my{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_personal@3x.png");
+}
+.g-tab .tab-item .tab-icon .badge{
+	position:absolute;
+	right:-0.22rem;
+	top:-0.06rem;
+	padding:0 0.09rem;
+	font-size:0.2rem;
+	background-color:#f81212;
+	color:#fff;
+	border-radius:0.16rem;
+	line-height:0.28rem;
+}
+.g-tab .tab-item .item{
+	margin-top:0.12rem;
+	font-size:0.22rem;
+}
+.g-tab .tab-item.z-cur{
+	color:#f81212;
+}
+.g-tab .tab-item.z-cur .tab-icon-home{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_home_push@3x.png");
+}
+.g-tab .tab-item.z-cur .tab-icon-find{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_explore_push@3x.png");
+}
+.g-tab .tab-item.z-cur .tab-icon-orders{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_detail_push@3x.png");
+}
+.g-tab .tab-item.z-cur .tab-icon-my{
+	background-image:url("http://wx.ts.163.com/res/img/footer/icon_tab_personal_push@3x.png");
+}
+.u-btn-large{
+	display:block;
+	position:relative;
+	margin:0 auto;
+	width:7.02rem;
+	height:0.9rem;
+	line-height:0.9rem;
+	text-align:center;
+	font-size:0.32rem;
+	color:#fff;
+	border-radius:0.04rem;
+	background-color:#d62730;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	-webkit-touch-callout:none;
+	-moz-touch-callout:none;
+	-ms-touch-callout:none;
+	touch-callout:none;
+}
+.u-btn-large.disabled,.u-btn-large:disabled{
+	background-color:#f7d4d6;
+}
+.m-modal{
+	position:relative;
+	z-index:999;
+}
+.m-modal .modal-mask{
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background:rgba(0,0,0,0.5);
+	z-index:1;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.m-modal .modal-dialog{
+	position:fixed;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%,-50%);
+	-moz-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	z-index:2;
+}
+.m-modal .m-table{
+	display:table;
+	text-align:center;
+	table-layout:fixed;
+	width:100%;
+}
+.m-modal .m-table .m-row{
+	display:table-row;
+}
+.m-modal .m-table .m-cell{
+	display:table-cell;
+	height:0.88rem;
+	border-right:2px solid #e3e3e3;
+	border-top:0;
+	line-height:1;
+	box-sizing:border-box;
+}
+.m-modal .m-table .m-cell:nth-child(2){
+	border-right-width:0;
+}
+.m-modal.prompt .modal-dialog{
+	width:6.3rem;
+	-moz-border-radius:0.16rem;
+	border-radius:0.16rem;
+	background:#fff;
+}
+.m-modal.prompt .modal-body{
+	text-align:center;
+	margin-bottom:0.52rem;
+}
+.m-modal.prompt .prompt-content{
+	padding-top:0.46rem;
+	padding-bottom:0.36rem;
+	font-size:0.36rem;
+	color:#333;
+}
+.m-modal.prompt .prompt-ipt-wrap{
+	padding:0 0.5rem;
+}
+.m-modal.prompt .u-ipt{
+	width:100%;
+	display:block;
+	box-sizing:border-box;
+	border:2px solid #b3b3b3;
+}
+.m-modal.prompt .prompt-ipt{
+	font-size:0.32rem;
+	height:0.9rem;
+	padding:0.27rem 0.33rem;
+	color:#333;
+	outline:none;
+	-moz-border-radius:0.04rem;
+	border-radius:0.04rem;
+}
+.m-modal.prompt .modal-footer{
+	border-top:2px solid #e3e3e3;
+}
+.m-modal.prompt .prompt-btn{
+	width:100%;
+	display:block;
+	height:100%;
+	font-size:0.34rem;
+	border:0;
+	background:#fff;
+	border-bottom-left-radius:0.16rem;
+	border-bottom-right-radius:0.16rem;
+	color:#333;
+	font-weight:400;
+}
+.m-modal.toast .modal-mask{
+	background:transparent;
+}
+.m-modal.toast .modal-body{
+	font-size:0.32rem;
+	color:#fff;
+	height:0.96rem;
+	line-height:0.96rem;
+	padding:0 0.72rem;
+	background:rgba(0,0,0,0.75);
+	border-radius:0.12rem;
+	opacity:1;
+	white-space:nowrap;
+}
+.m-modal.loading .modal-mask{
+	background:transparent;
+}
+.m-modal.loading .modal-body{
+	width:2.86rem;
+	height:1.86rem;
+	-moz-border-radius:0.12rem;
+	border-radius:0.12rem;
+	background:rgba(0,0,0,0.75);
+	text-align:center;
+}
+.m-modal.loading .modal-body .u-icon-loading{
+	position:absolute;
+	width:0.52rem;
+	height:0.52rem;
+	top:0.43rem;
+	left:50%;
+	margin-left:-0.26rem;
+	background:url("http://wx.ts.163.com/res/img/my/loading_2.png") 0 0 no-repeat;
+	background-size:100%;
+	-webkit-animation:loading 0.6s steps(12) infinite;
+	animation:loading 0.6s steps(12) infinite;
+	-webkit-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+}
+.m-modal.loading .modal-body .loading-tip{
+	padding-top:1.19rem;
+	color:#fff;
+	font-size:0.32rem;
+	line-height:0.37rem;
+	white-space:nowrap;
+}
+@-webkit-keyframes loading{
+	0%{
+		-webkit-transform:rotate(0);
+		transform:translate3d(0);
+	}
+	100%{
+		-webkit-transform:rotate(360deg);
+		transform:rotate(360deg);
+	}
+}
+.m-modal.confirm .modal-dialog{
+	width:6.3rem;
+	-moz-border-radius:0.12rem;
+	border-radius:0.12rem;
+	background:#fff;
+}
+.m-modal.confirm .modal-body{
+	padding:0.5rem;
+	padding-bottom:0.52rem;
+}
+.m-modal.confirm .modal-footer{
+	border-top:2px solid #e3e3e3;
+}
+.m-modal.confirm .confirm-content{
+	line-height:0.45rem;
+	font-size:0.32rem;
+	color:#333;
+}
+.m-modal.confirm .m-cell{
+	display:table-cell;
+	height:0.9rem;
+	border-top:0;
+	line-height:1;
+	box-sizing:border-box;
+	border-right:0;
+}
+.m-modal.confirm .confirm-btn{
+	width:100%;
+	display:block;
+	height:100%;
+	font-size:0.36rem;
+	border:0;
+	background:#fff;
+	border-bottom-left-radius:0.16rem;
+	border-bottom-right-radius:0.16rem;
+	color:#333;
+	font-weight:400;
+}
+    </style>
+    <style type="text/css">
+    	.m-authenticate .m-ipt{
+	display:inline-block;
+	line-height:0.36rem;
+	padding:0.35rem 0;
+	font-size:0.32rem;
+	width:3.5rem;
+	color:#666;
+	border:0;
+	background:transparent;
+}
+.m-authenticate .m-ipt::-webkit-input-placeholder{
+	color:#d9d9d9;
+}
+.m-authenticate .m-ipt-wrap{
+	border-bottom:1px solid #dbdbdb;
+}
+.m-authenticate .m-ipt-item{
+	position:relative;
+	margin-left:0.3rem;
+	height:1.08rem;
+	line-height:1.08rem;
+	border-bottom:1px solid #dbdbdb;
+	font-size:0.32rem;
+	color:#333;
+	white-space: nowrap;
+}
+.m-authenticate .m-ipt-item:last-child{
+	border-bottom:none;
+}
+.m-authenticate .m-ipt-label{
+	width:1.48rem;
+	display:inline-block;
+}
+.m-authenticate .m-btn-next{
+	margin:1.4rem auto 0;
+	width:7.02rem;
+	height:0.9rem;
+	line-height:0.9rem;
+	text-align:center;
+	font-size:0.32rem;
+	color:#fff;
+	background:#d62730;
+	-webkit-border-radius:0.04rem;
+	border-radius:0.04rem;
+}
+.m-authenticate .m-btn-next.disable{
+	background:#f7d4d6;
+}
+.m-stepNav{
+	width:7.5rem;
+	height:1.68rem;
+	border-bottom:1px solid #dbdbdb;
+	background:#f5f5f5;
+}
+.m-stepNav .m-step{
+	position:relative;
+	margin:0 2.05rem;
+	padding-top:0.41rem;
+	display:-webkit-flex;
+	display:flex;
+	-webkit-justify-content:space-between;
+	justify-content:space-between;
+}
+.m-stepNav .m-step:before{
+	position:absolute;
+	left:0;
+	top:0.65rem;
+	content:"";
+	width:100%;
+	height:0.02rem;
+	background:#dbdbdb;
+}
+.m-stepNav .m-step-item{
+	position:relative;
+	width:0.5rem;
+	height:0.5rem;
+	color:#ccc;
+}
+.m-stepNav .m-step-item.complete{
+	color:#333;
+}
+.m-stepNav .m-step-item .u-icon{
+	display:block;
+	font-size:0.5rem;
+	background:#fff;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+}
+.m-stepNav .m-step-item.active{
+	color:#d62730;
+}
+.m-stepNav .m-step-item .u-icon-step_success{
+	color:#d62730;
+}
+.m-stepNav .m-step-title{
+	position:absolute;
+	left:0.25rem;
+	top:0.7rem;
+	font-size:0.24rem;
+	-webkit-transform:translateX(-50%);
+	transform:translateX(-50%);
+	white-space:nowrap;
+}
+.m-bindMobild .validCode-wrap{
+	display:inline-block;
+	width:2.16rem;
+}
+.m-bindMobild .m-validCode{
+	position:relative;
+	width:1.96rem;
+	height:0.64rem;
+	line-height:0.64rem;
+	text-align:center;
+	border:2px solid #d62730;
+	-webkit-border-radius:0.04rem;
+	border-radius:0.04rem;
+	font-size:0.28rem;
+	color:#ca151e;
+	background:#fff;
+	font-weight:400;
+}
+.m-bindMobild .m-validCode.disable{
+	border-color:#e6e6e6;
+	color:#d9d9d9;
+}
+.m-bindMobild .m-validCode.waiting{
+	color:transparent;
+}
+.m-bindMobild .m-validCode.waiting:before{
+	position:absolute;
+	content:"";
+	top:50%;
+	left:50%;
+	width:0.4rem;
+	height:0.4rem;
+	margin-left:-0.2rem;
+	margin-top:-0.2rem;
+	background:url("http://wx.ts.163.com/res/img/fans/loading_list.gif") 0 0 no-repeat;
+	background-size:100%;
+}
+.m-personalInfo{
+	background:#f5f5f5;
+}
+.m-personalInfo .m-ipt-wrap{
+	background:#fff;
+}
+.m-personalInfo .m-select{
+	display:inline-block;
+	height:1rem;
+	line-height:1rem;
+	font-size:0.32rem;
+	width:3.49rem;
+	color:#666;
+	border:0;
+	background:#fff;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.m-personalInfo .m-select.hide{
+	opacity:0;
+}
+.m-personalInfo .m-ipt-label{
+	width:1.86rem;
+}
+.m-personalInfo .m-ipt{
+	width:5.2rem;
+}
+.m-personalInfo .idcard-wrap{
+	margin-top:0.19rem;
+	border-top:1px solid #dbdbdb;
+	background:#fff;
+}
+.m-personalInfo .idcard-wrap .title{
+	padding:0.42rem 0 0.22rem 0.3rem;
+	font-size:0.32rem;
+	font-weight:400;
+	color:#333;
+}
+.m-personalInfo .idcard-wrap .list{
+	width:6.7rem;
+	position:relative;
+	margin-left:0.3rem;
+	padding-bottom:0.03rem;
+	padding-left:0.15rem;
+	line-height:0.33rem;
+	font-size:0.24rem;
+	color:#999;
+}
+.m-personalInfo .idcard-wrap .list:before{
+	position:absolute;
+	top:0.13rem;
+	left:0.02rem;
+	content:"";
+	width:0.06rem;
+	height:0.06rem;
+	-webkit-border-radius:0.02rem;
+	border-radius:0.5%;
+	background:#999;
+}
+.m-personalInfo .idcard-wrap .idcard-content{
+	padding-top:0.48rem;
+}
+.m-personalInfo .idcard-wrap .idcard-group{
+	margin:0 0.44rem;
+	display:-webkit-flex;
+	display:flex;
+	-webkit-justify-content:space-between;
+	justify-content:space-between;
+}
+.m-personalInfo .idcard-wrap .idcard-upload{
+	position:relative;
+	width:3.1rem;
+	height:1.96rem;
+	-webkit-border-radius:0.04rem;
+	border-radius:0.04rem;
+	background:#f0f0f0;
+}
+.m-personalInfo .idcard-wrap .idcard-upload .pic{
+	display:block;
+	width:3.1rem;
+	height:1.96rem;
+	-webkit-border-radius:0.04rem;
+	border-radius:0.04rem;
+}
+.m-personalInfo .idcard-wrap .idcard-upload .u-icon-close{
+	position:absolute;
+	right:-0.14rem;
+	top:-0.2rem;
+	width:0.5rem;
+	height:0.5rem;
+	background:rgba(0,0,0,0.8);
+	-webkit-border-radius:50%;
+	border-radius:50%;
+}
+.m-personalInfo .idcard-wrap .idcard-upload .u-icon-close:before,.m-personalInfo .idcard-wrap .idcard-upload .u-icon-close:after{
+	position:absolute;
+	left:0.13rem;
+	top:0.242rem;
+	content:"";
+	width:0.24rem;
+	height:0.02rem;
+	background:#fff;
+	-webkit-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	-webkit-transform:rotate(45deg);
+	transform:rotate(45deg);
+}
+.m-personalInfo .idcard-wrap .idcard-upload .u-icon-close:after{
+	-webkit-transform:rotate(135deg);
+	transform:rotate(135deg);
+}
+.m-personalInfo .idcard-wrap .idcard-upload .idcard-upload-content{
+	height:100%;
+}
+.m-personalInfo .idcard-wrap .idcard-upload .idcard-upload-content:before,.m-personalInfo .idcard-wrap .idcard-upload .idcard-upload-content:after{
+	position:absolute;
+	left:1.32rem;
+	top:0.75rem;
+	content:"";
+	width:0.46rem;
+	height:0.02rem;
+	background:#999;
+	-webkit-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+}
+.m-personalInfo .idcard-wrap .idcard-upload .idcard-upload-content:after{
+	-webkit-transform:rotate(90deg);
+	transform:rotate(90deg);
+}
+.m-personalInfo .idcard-wrap .idcard-upload .tip{
+	padding-top:1.32rem;
+	font-size:0.28rem;
+	text-align:center;
+	color:#999;
+	font-weight:400;
+}
+.m-personalInfo .idcard-wrap .intro-wrap{
+	font-size:0.28rem;
+	color:#999;
+	padding-top:0.36rem;
+	width:3.1rem;
+	height:0.98rem;
+}
+.m-personalInfo .idcard-wrap .intro-wrap .intro{
+	float:left;
+	width:1.25rem;
+	padding-top:0.04rem;
+	text-indent:0.34rem;
+}
+.m-personalInfo .idcard-wrap .intro-wrap .example{
+	width:1.52rem;
+	height:0.96rem;
+}
+.m-personalInfo .m-btn-next{
+	margin-top:1.74rem;
+	margin-bottom:0.24rem;
+}
+.confirm-content{
+	text-align:center;
+}
+    </style>
+    <script>
+    (function(win){
+        var doc = win.document,
+            docElem = doc.documentElement,
+            designDraftWidth = 750, //设计稿宽度
+            dpr = Math.min(win.devicePixelRatio, 3),
+            resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize';
+
+            //设置dpr，安卓6以下不支持initial-scale小于1
+            var userAgent = navigator.userAgent.toLowerCase(); 
+            var check = userAgent.match(/android\s([0-9\.]*)/);
+            if(check && check[1] && check[1].split(".")[0] - 6 < 0){
+                dpr = 1;
+            }
+            var scale = 1 / dpr;
+
+            docElem.dataset.dpr = dpr;
+            var metaElem = doc.createElement('meta');
+            metaElem.name = 'viewport';
+            metaElem.content = 'width=device-width, initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ", user-scalable=no";
+            docElem.firstElementChild.appendChild(metaElem);
+            var recalc = function(){
+                var width = docElem.getBoundingClientRect().width;
+                alert(width)
+                docElem.style.fontSize = 100 * (width / designDraftWidth) + 'px';
+                window.htmlFontSize = 100 * (width / designDraftWidth)
+            };
+            recalc();
+            win.addEventListener(resizeEvt, recalc, false);
+
+        window.xid = "";
+    }(window));
+    </script>
+    <script>
+        (function(){
+            var isKaoLa = navigator.userAgent.match(/kaolaApp/i);
+            if(!isKaoLa) return false;
+            var newScript = document.createElement("script");
+            newScript.type = "text\/javascript";
+            newScript.async = true;
+            newScript.src = "/src/javascript/base/kaola_util.js"
+            document.documentElement.firstElementChild.appendChild(newScript);
+        }());
+    </script>
+    <!-- sensor config -->
+    <script>
+    window.sensorConfig = {
+        sdk_url: 'http://wx.ts.163.com/res/3rd/sensorsdata.min.js',
+        name: 'sa',
+        server_url: 'http://qiyukf.cloud.sensorsdata.cn:8006/sa?project=SocialRetailing&token=de59afd74b0171d2'
+    } 
+    </script>
+    <!-- @IGNORE {mode:'online'} -->
+    <script>
+    window.sensorConfig.server_url = 'https://qiyukf.cloud.sensorsdata.cn:4006/sa?token=de59afd74b0171d2&project=SRtest'
+    </script>
+    <!-- /@IGNORE -->
+
+    <script>
+    (function(para) {
+      var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+      w['sensorsDataAnalytic201505'] = n;
+      w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+      var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout','trackLink','clearAllRegister'];
+      for (var i = 0; i < ifs.length; i++) {
+        w[n][ifs[i]] = w[n].call(null, ifs[i]);
+      }
+      if (!w[n]._t) {
+        x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+        x.async = 1;
+        x.src = p;
+        y.parentNode.insertBefore(x, y);
+        w[n].para = para;
+      }
+    })(window.sensorConfig);
+    if(window.xid) {
+        sa.identify(window.xid)
+    }
+    sa.quick('autoTrack');
+    </script>
+    <link rel="stylesheet" href="/src/css/base.css">
+    <link rel="stylesheet" href="/src/css/sharer/certificate/index.css">
+</head>
+<body>
+    <div class="g-con">
+        <div class="g-wrapper" id="app"><div class="m-authenticate">
+    <div class="m-stepNav">
+    <div class="m-step">
+    	<!--Regular list-->
+    		<div class="m-step-item complete">
+    			<span class="u-icon u-icon-step_1 u-icon-step_success"></span>
+    			<p class="m-step-title">绑定手机号</p>
+    		</div>
+    	
+    		<div class="m-step-item active">
+    			<span class="u-icon u-icon-step_2"></span>
+    			<p class="m-step-title">填写个人信息</p>
+    		</div>
+    	
+    </div>
+</div>
+<div>
+	<!--inlcude-->
+        <!--Regular if0--><!--Regular if1-->
+        <div class="m-personalInfo">
+	<div class="m-ipt-wrap">
+    	<div class="m-ipt-item"><label class="m-ipt-label">真实姓名</label><input type="text" placeholder="请确保输入真实姓名" maxlength="20" class="m-ipt">
+    	</div>
+    	<div class="m-ipt-item"><label class="m-ipt-label">性别</label><select class="m-select">
+    			<option value="1">男</option>
+    			<option value="2">女</option>
+    		</select>
+    	</div>
+    	<div class="m-ipt-item">
+    		<label class="m-ipt-label">微信号</label><input type="text" maxlength="20" class="m-ipt">
+    	</div>
+    	<div class="m-ipt-item">
+    		<label class="m-ipt-label">身份证号</label><input type="text" maxlength="18" placeholder="填写后，我们将加密处理" class="m-ipt">
+    	</div>
+    </div>
+    <div class="idcard-wrap">
+    	<p class="title">请上传身份证照片，补充实名认证信息</p>
+    	<p class="list">请上传原始比例清晰的身份证正反面，请勿进行裁剪涂改，否则无法通过审核；</p>
+    	<p class="list">照片格式支持jpg，jpeg，png；</p>
+    	<div class="idcard-content">
+    		<div class="idcard-group">
+    			<div class="idcard-upload">
+    				<!--Regular if2-->
+    				<div class="idcard-upload-content">
+    					<p class="tip">正面照片</p>
+    				</div>
+    				
+    			</div>
+    			<div class="idcard-upload">
+                    
+                    <div class="idcard-upload-content">
+                        <p class="tip">反面照片</p>
+                    </div>
+                    <!--Regular if3-->
+    			</div>
+    		</div>
+    		<div class="idcard-group">
+    			<div class="intro-wrap">
+    				<p class="intro">示例：</p>
+    				<img src="http://wx.ts.163.com/res/img/authentication/idcard-front.jpg" class="example">
+    			</div>
+    			<div class="intro-wrap">
+    				<p class="intro">示例：</p>
+    				<img src="http://wx.ts.163.com/res/img/authentication/idcard-back.jpg" class="example">
+    			</div>
+    		</div>
+    		<div class="m-btn-next">提交</div>
+    	</div>
+    </div>
+</div>
+        
+    
+</div>
+</div></div>
+    </div>
+    <!-- @NOPARSE -->
+    
+    <script type="text/javascript">
+        window.pageInfo = {
+            realName: '跟着狗跑的鸭\'ㅂ\'*',
+            sex: 0,
+            wechat: 'zhao199bgq',
+            idCard: '440902199205080097',
+            idCardFront: '',
+            idCardBack: 'http://gs.189.cn/webShop/images/public/xq_back.jpg'
+        };
+    </script>
+    <!-- /@NOPARSE -->
+
+</body></html>
