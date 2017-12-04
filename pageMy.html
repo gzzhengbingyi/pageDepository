@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body,iframe{
+            height: 100%;
+        }
+        div{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div>测试跳转</div>
+    <script>
+        var oIframe = document.createElement("iframe")
+        setTimeout(function(){
+            oIframe.src = "http://wx.ts.163.com/sharer/growth/info";
+            document.body.appendChild(oIframe);
+        }, 500);
+    </script>
+</body>
+</html>
