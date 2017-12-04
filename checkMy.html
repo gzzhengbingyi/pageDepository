@@ -16,11 +16,11 @@
     </style>
 </head>
 <body>
-    <iframe id="oIframe" src="http://wx.ts.163.com/my" frameborder="0"></iframe>
     <script>
+        var oIframe = document.createElement("iframe")
         setTimeout(function(){
-            document.getElementById('oIframe').src = "http://wx.ts.163.com/sharer/growth/info"
-        })
+            oIframe.src = "http://wx.ts.163.com/sharer/growth/info"
+        }, 500);
     </script>
 </body>
 </html>
